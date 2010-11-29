@@ -5,6 +5,7 @@
 
 package auth.totp;
 
+import auth.authDbSecrets;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -24,9 +25,9 @@ import auth.hash.AeSimpleSHA1;
  */
 public class totpauth {
 
-    private static String DB_USER = "auth_test";
-    private static String DB_PASSWORD = "password";
-    private static String DB_URL = "jdbc:mysql://10.1.1.2/auth?autoReconnect=true";
+    private static String DB_USER = authDbSecrets.DB_USER;
+    private static String DB_PASSWORD = authDbSecrets.DB_PASSWORD;
+    private static String DB_URL = authDbSecrets.DB_URL;
 
      public totpauth() {
 

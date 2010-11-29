@@ -14,7 +14,7 @@
         <servlet-class>auth.yubikey.VerificationServlet</servlet-class>
 
 
-        <init-param>
+<!--        <init-param>
             <param-name>db_user</param-name>
             <param-value>auth_test</param-value>
         </init-param>
@@ -27,7 +27,7 @@
         <init-param>
             <param-name>db_url</param-name>
             <param-value>jdbc:mysql://10.1.1.2/auth?autoReconnect=true</param-value>
-        </init-param>
+        </init-param>-->
 
         <load-on-startup>1</load-on-startup>
 

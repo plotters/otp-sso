@@ -4,6 +4,7 @@
  */
 package auth.yubikey;
 
+import auth.authDbSecrets;
 import com.mysql.jdbc.Connection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -26,9 +27,9 @@ public class yubiauth {
     private int _clientId;
     private String _response;
 
-    private static String DB_USER = "auth_test";
-    private static String DB_PASSWORD = "password";
-    private static String DB_URL = "jdbc:mysql://10.1.1.2/auth?autoReconnect=true";
+    private static String DB_USER = authDbSecrets.DB_USER;
+    private static String DB_PASSWORD = authDbSecrets.DB_PASSWORD;
+    private static String DB_URL = authDbSecrets.DB_URL;
 
     /**
      * Initializes the Yubico object.
