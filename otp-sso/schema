@@ -1,0 +1,14 @@
+uid	username	yubikey		totp	staticwifi	samba	addusers
+
+uid	tokenid		yubipre
+
+uid	totp		prefix
+
+uid	scratch
+
+uid	wifiuser	description
+
+*radcheck*
+
+wifiuser(username)	wifipassword(value)
+
