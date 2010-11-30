@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class yubiauth {
 
-    static final String YUBICO_AUTH_SRV_URL = "http://127.0.0.1:8080/auth/verify?id=";
+    static final String YUBICO_AUTH_SRV_URL = "http://127.0.0.1:8080/verify?id=";
     private int _clientId;
     private String _response;
 
