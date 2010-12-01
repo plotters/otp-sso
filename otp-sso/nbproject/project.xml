@@ -10,43 +10,31 @@
                     <file>${libs.GlassFish_Server_3.classpath}</file>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.catalina-root.jar}</file>
+                    <file>${file.reference.mysql-connector-java-3.1.13-bin.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.commons-codec-1.3.jar}</file>
+                    <file>${file.reference.catalina-root.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.jdom.jar}</file>
+                    <file>${file.reference.commons-codec-1.3.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.xmldsig.jar}</file>
+                    <file>${file.reference.jdom.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.xmlsec.jar}</file>
+                    <file>${file.reference.log4j-1.2.13.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.jopenid-1.07.jar}</file>
+                    <file>${file.reference.tsik.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.log4j-1.2.13.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.yubico-base-1.1.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.tsik.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${file.reference.mysql-connector-java-3.1.13-bin.jar}</file>
+                    <file>${file.reference.yubico-base-1.1.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
