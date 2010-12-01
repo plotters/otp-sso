@@ -83,3 +83,12 @@ String userID = null;
       }
 
       %>
+
+      <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>RIS-NET SSO - Basic Auth</title>
+    </head>
+    <body>
+    </body>
+</html>
