@@ -1,19 +1,81 @@
-<%-- 
-    Document   : login
-    Created on : 01/12/2010, 7:23:36 PM
-    Author     : jake
---%>
+<jsp:useBean id="idHandler" class="auth.login" scope="request">
+    <jsp:setProperty name="idHandler" property="*"/>
+</jsp:useBean>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SSO - User Manager</title>
-    </head>
-    <body>
-        
-    </body>
-</html>
+<jsp:include page="includes/pageTop.jsp" >
+    <jsp:param name="title" value="SSO Login Page" />
+</jsp:include>
+
+
+<%@ page import="java.io.*,java.util.*" %>
+<%@page contentType="text/html" %>
+
+
+<%
+
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+
+            boolean loginBox = true;
+
+            Enumeration paramNames = session.getAttributeNames();
+
+            while (paramNames.hasMoreElements()) {
+                String paramName = (String) paramNames.nextElement();
+                if (paramName.equals("username")) {
+                    String paramValue = (String) session.getAttribute(paramName);
+
+                    if (!paramValue.equals(null)) {
+                        loginBox = false;
+                        out.print("Hello " + session.getAttribute("username"));
+                    }
+                }
+            }
+
+
+            if (username != null && password != null) {
+
+                if (idHandler.authenticate(username, password)) {
+                    out.print("Password good");
+
+                    loginBox = false;
+
+                    session.setAttribute("username", username);
+
+%> <script type="text/javascript">
+    <!--
+    window.location = "../login.jsp"
+    //-->
+</script> <%
+
+                } else {
+
+                    out.print("Password bad");
+
+                    username = null;
+                    password = null;
+                }
+
+            }
+
+            if (loginBox) {%>
+<center><form action="login.jsp" method="POST">
+        Username: <input type="text" name="username" />
+        <br />
+        <br />
+        Password: <input type="password" name="password" />
+        <br/>
+        <br />
+        <input type="submit" value="Submit" />
+    </form></center>
+
+<% }
+
+
+            username = null;
+            password = null;
+
+
+%>
+<jsp:include page="includes/pageBtm.jsp" />
