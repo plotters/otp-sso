@@ -51,7 +51,7 @@
 
                 } else {
 
-                    out.print("Password bad");
+                    out.print("<p> Incorret Username or Password </p><br />");
 
                     username = null;
                     password = null;

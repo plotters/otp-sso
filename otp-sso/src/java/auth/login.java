@@ -42,7 +42,7 @@ public class login {
         int scratch = 0;
         int uid = 0;
 
-        if (username != null && password != null) {
+        if (username != null && password != null && password.length()>7) {
             try {
                 Connection c = null;
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
