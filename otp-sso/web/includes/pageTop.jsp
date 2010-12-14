@@ -50,8 +50,8 @@ window.location = "../login.jsp"
 
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><% out.print(request.getParameter("title"));
-            %></title>
+        <% out.print(request.getParameter("header"));
+            %>
 
         <link rel="stylesheet" href="../style/style.css" media="all" />
 

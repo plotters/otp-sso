@@ -6,15 +6,12 @@
     </servlet>
     <servlet>
         <servlet-name>ProcessResponseServlet</servlet-name>
-        <servlet-class>servlets.ProcessResponseServlet</servlet-class>
+        <servlet-class>auth.ProcessResponseServlet</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>verify</servlet-name>
         <servlet-class>auth.yubikey.VerificationServlet</servlet-class>
-
-
-<!--        <init-param>
+        <!--        <init-param>
             <param-name>db_user</param-name>
             <param-value>auth_test</param-value>
         </init-param>
@@ -28,40 +25,23 @@
             <param-name>db_url</param-name>
             <param-value>jdbc:mysql://10.1.1.2/auth?autoReconnect=true</param-value>
         </init-param>-->
-
         <load-on-startup>1</load-on-startup>
-
     </servlet>
-
-
-   
-
     <servlet-mapping>
         <servlet-name>CreateRequestServlet</servlet-name>
         <url-pattern>/CreateRequestServlet</url-pattern>
     </servlet-mapping>
-
-
-
     <servlet-mapping>
         <servlet-name>ProcessResponseServlet</servlet-name>
         <url-pattern>/ProcessResponseServlet</url-pattern>
     </servlet-mapping>
-
-
     <servlet-mapping>
         <servlet-name>verify</servlet-name>
         <url-pattern>/verify</url-pattern>
     </servlet-mapping>
-
-
-
     <welcome-file-list>
         <welcome-file>get_auth.jsp</welcome-file>
     </welcome-file-list>
-
-
-
     <session-config>
         <session-timeout>
             30

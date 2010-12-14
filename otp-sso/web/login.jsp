@@ -4,7 +4,7 @@
 
 
 <jsp:include page="includes/pageTop.jsp" >
-    <jsp:param name="title" value="SSO Login Page" />
+    <jsp:param name="header" value="<title>SSO Login Page</title>" />
 </jsp:include>
 
 
