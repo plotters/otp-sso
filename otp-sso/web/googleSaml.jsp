@@ -66,11 +66,11 @@
     <input type="hidden" name="returnPage" value="googleSaml.jsp">
     <input type="hidden" name="samlAction" value="Generate SAML Response">
 
-
+    <div id="h2box"><h2>Google Apps Login</h2></div><br />
 
     <div id="login">
          <br />
-        Username: <input type="text" name="username" />
+        Username: <input id="focus" type="text" name="username" />
         <br />
         <br />
         Password: <input type="password" name="password" />

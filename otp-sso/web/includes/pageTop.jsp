@@ -56,6 +56,13 @@ window.location = "../index.jsp"
 
         <link rel="stylesheet" href="../style/style.css" media="all" />
 
+        <script type="text/javascript">
+   function formfocus() {
+      document.getElementById('focus').focus();
+   }
+   window.onload = formfocus;
+</script>
+
         <!--[if IE]>
         <style type="text/css">#header h1{ font-size:32px; } .column { width:200px;border:0;overflow:hidden; }</style>
         <![endif]-->

@@ -28,7 +28,28 @@
 
                     if (!paramValue.equals(null)) {
                         loginBox = false;
-                        out.print("Hello " + session.getAttribute("username"));
+                        
+                        %> 
+                        
+<div id="h2box"><h2>Welcome <% out.print(session.getAttribute("username")); %></h2></div><br />
+
+<div id="txtbox"><h2>News</h2><p>
+This tool is still very much in beta... still getting it running and adding features.</p>
+    <p>
+</div>
+<br />
+<div id="txtbox"><h2>Common Tasks</h2>
+   <br /><p>
+<a href="http://start.ris-net.net" class="button">Start RIS-NET</a>
+   <a href="http://www.ris-net.net" class="button">RIS-NET Home</a>
+<a href="http://start.here" class="button">Start.Here</a>
+<a href="http://wiki.local" class="button">Wiki.Local</a>
+   </p><br />
+</div>
+
+                        <%
+
+
                     }
                 }
             }
@@ -61,9 +82,12 @@
                                 }
 
                                 if (loginBox) {%>
+
+<div id="h2box"><h2>RIS-NET Login</h2></div><br />
+
 <div id="login"><form action="index.jsp" method="POST">
         <br />
-        Username: <input type="text" name="username" />
+        Username: <input id="focus" type="text" name="username" />
         <br />
         <br />
         Password: <input type="password" name="password" />

@@ -9,7 +9,11 @@
 <div id="nav">
 
     <ul>
-        <% Enumeration paramNames = session.getAttributeNames();
+         <li><a href="index.jsp">Home</a></li>
+         <li><a href="https://www.google.com/a/ris-net.net/ServiceLogin?continue=http://partnerpage.google.com/ris-net.net&followup=http://partnerpage.google.com/ris-net.net&service=ig&passive=true&cd=US&hl=en&nui=1&ltmpl=default">Google SSO</a></li>
+       <li><a href="tools.jsp">Tools</a></li>
+
+         <% Enumeration paramNames = session.getAttributeNames();
 
                     while (paramNames.hasMoreElements()) {
                         String paramName = (String) paramNames.nextElement();

@@ -312,7 +312,7 @@ public class ProcessResponseServlet extends HttpServlet {
 
                 if (username == null) {
                     //request.setAttribute("error", "Login Failed: Invalid user.");
-                    request.setAttribute("error", "<div id=\"error\"><img src=\"img/warning.gif\"><br />Incorrect username or password</div><br />");
+                    request.setAttribute("error", "<div id=\"error\"><img src=\"img/warning.gif\"><br />Incorrect username or password</div>");
 
 
                 } else {

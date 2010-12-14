@@ -49,6 +49,33 @@ h1, h2, h3, h4 { text-transform:uppercase;font-family:champ, arial, verdana, san
          padding-top: 10px;
 }
 
+#h2box { border:solid 1px #000;background:#ccc;
+         position: relative;
+         left: 100px;
+         right: 100px;
+         color: black;
+         padding-left: 10px;
+         padding-right: 10px;
+         text-align: center;
+         padding-bottom: 10px;
+         padding-top: 10px;
+}
+
+#txtbox { border:solid 1px #000;background:#ccc;
+         position: relative;
+         left: 100px;
+         right: 100px;
+         color: black;
+         padding-left: 10px;
+         padding-right: 10px;
+         text-align: left;
+         padding-bottom: 10px;
+         padding-top: 10px;
+         font-family: Arial, Helvetica, sans-serif;
+}
+
+#txtbox p {color: black; text-align: left; font-family: Arial, Helvetica, sans-serif;}
+
 #header {}
 
 #header h1 { font-family:champ, arial, sans-serif;text-transform:uppercase;font-size:60px;color:#ffff66;display:block;float:left;width:300px;text-align:center; }
