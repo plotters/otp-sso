@@ -12,7 +12,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class login {
 
     private String username = "";
@@ -32,6 +31,58 @@ public class login {
         this.password = password;
     }
 
+    public String getUid(String username) {
+
+        String uid = null;
+
+        if (username != null) {
+            try {
+                Connection c = null;
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                c = (Connection) DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+                String sql = "SELECT * FROM authUsers WHERE (username = '"
+                        + username
+                        + "') LIMIT 1";
+
+                Statement stmt = c.createStatement();
+                stmt.setFetchSize(10);
+
+                ResultSet rs = stmt.executeQuery(sql);
+
+                if (rs.next()) {
+                    uid = rs.getString(1);
+                }
+                //System.out.println("Yubi:" + yubi);
+                rs.close();
+                stmt.close();
+
+                if (c != null) {
+                    try {
+                        c.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+        }
+        return uid;
+
+    }
+
     public boolean authenticate(String username,
             String password) {
 
@@ -42,7 +93,7 @@ public class login {
         int scratch = 0;
         int uid = 0;
 
-        if (username != null && password != null && password.length()>7) {
+        if (username != null && password != null && password.length() > 7) {
             try {
                 Connection c = null;
                 Class.forName("com.mysql.jdbc.Driver").newInstance();

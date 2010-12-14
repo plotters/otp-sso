@@ -76,7 +76,7 @@
     </center>
 
     <center>
-        <input type="submit" name="samlButton" value="Google Login">
+        <input type="submit" name="samlButton" value="Login">
     </center>
     <p><br>
 </form>
@@ -93,7 +93,12 @@
             </div>
           </form>
 <%
-        } else {
+        session.setAttribute("username", username);
+        session.setAttribute("uid", idHandler.getUid(username));
+            
+            } else {
+
+
 %>
 <p><span style="font-weight:bold;color:red">
         You must enter a valid username and password to log in.

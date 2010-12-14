@@ -13,11 +13,11 @@
 
                     while (paramNames.hasMoreElements()) {
                         String paramName = (String) paramNames.nextElement();
-                        if (paramName.equals("username")) {
+                        if (paramName.equals("uid")) {
                             String paramValue = (String) session.getAttribute(paramName);
 
                             if (!paramValue.equals(null)) {
-        %> <li><a href="login.jsp?lo=true">Logout</a></li> <%;
+        %> <li><a href="index.jsp?lo=true">Logout</a></li> <%;
                                             }
                                         }
                                     }%>

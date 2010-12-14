@@ -321,6 +321,8 @@ public class ProcessResponseServlet extends HttpServlet {
                      * domain. The keys included in the reference implementation sign SAML
                      * responses for the psosamldemo.net domain.
                      */
+
+
                     String publicKeyFilePath = getServletContext().getRealPath(
                             "./keys/DSAPublicKey.key");
                     String privateKeyFilePath = getServletContext().getRealPath(

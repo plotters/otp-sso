@@ -29,10 +29,11 @@
                     String paramValue = request.getParameter(paramName);
                     if (paramValue.equals("true")) {
                     session.setAttribute("username", null);
+                    session.setAttribute("uid", null);
 
                         %> <script type="text/javascript">
 <!--
-window.location = "../login.jsp"
+window.location = "../index.jsp"
 //-->
 </script> <%
 

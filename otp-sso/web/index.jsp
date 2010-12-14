@@ -42,6 +42,7 @@
                     loginBox = false;
 
                     session.setAttribute("username", username);
+                    session.setAttribute("uid", idHandler.getUid(username));
 
 %> <script type="text/javascript">
     <!--
@@ -67,7 +68,7 @@
         Password: <input type="password" name="password" />
         <br/>
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Login" />
     </form></center>
 
 <% }

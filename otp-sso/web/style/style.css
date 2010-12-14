@@ -7,7 +7,8 @@
 
 
 * { margin:0;padding:0; }
-body {background:url(../img/bodybg.png) top left repeat;color:#FFF;}
+/*body {background:url(../img/bodybg.png) top left repeat;color:#FFF;}*/
+body { background-color:  #cacbcb;}
 
 p { font:normal 12px  Arial, Helvetica, sans-serif;color:#FFF;padding:8px 0; }
 
