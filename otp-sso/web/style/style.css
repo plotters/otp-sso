@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: champ;
-    src: url("../fonts/CL.ttf") format("truetype");
+    src: url("../fonts/28.ttf") format("truetype");
 }
 
 
@@ -51,10 +51,10 @@ h1, h2, h3, h4 { text-transform:uppercase;font-family:champ, arial, verdana, san
 
 #header {}
 
-#header h1 { font-family:champ, arial, sans-serif;text-transform:uppercase;font-size:50px;color:#9bec1b;display:block;float:left;width:250px;text-align:center; }
+#header h1 { font-family:champ, arial, sans-serif;text-transform:uppercase;font-size:60px;color:#ffff66;display:block;float:left;width:300px;text-align:center; }
 #header p { font-family:arial, sans-serif;color:#CCC;display:block;float:right;width:550px; }
 
-#nav { width:860px;clear:both;border-bottom:2px solid #FFF;height:32px;padding:16px 0 0 0;}
+#nav { width:860px;clear:both;border-bottom:2px solid #FFF;height:32px;}
 #nav ul {}
 #nav li { list-style:none;display:block;float:left;border:2px solid #FFF;padding:6px;margin:0 3px 0 0;-moz-border-radius-topleft: 10px;-moz-border-radius-topright: 10px;border-bottom:0; }
 #nav li a { font:bold 16px champ, arial, verdana, sans-serif;text-transform:uppercase;text-decoration:none; }
