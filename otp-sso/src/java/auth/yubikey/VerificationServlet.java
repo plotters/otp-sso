@@ -39,7 +39,11 @@ public class VerificationServlet extends WsApiServlet
 
   public void doQuery (HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException
+
+
   {
+
+      resp.setContentType("text/html");
     Map map = req.getParameterMap ();
       print (resp,
 	     VerifyRequestFactory.getDefault ().createFrom (map).process ());

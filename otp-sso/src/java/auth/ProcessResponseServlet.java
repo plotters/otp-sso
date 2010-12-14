@@ -231,6 +231,8 @@ public class ProcessResponseServlet extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("text/html");
         String SAMLRequest = request.getParameter("SAMLRequest");
         String relayStateURL = request.getParameter("RelayState");
         if (SAMLRequest != null) {
@@ -263,6 +265,8 @@ public class ProcessResponseServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("text/html");
         String samlAction = request.getParameter("samlAction");
         String SAMLRequest = request.getParameter("SAMLRequest");
         String returnPage = request.getParameter("returnPage");
@@ -318,9 +322,9 @@ public class ProcessResponseServlet extends HttpServlet {
                      * responses for the psosamldemo.net domain.
                      */
                     String publicKeyFilePath = getServletContext().getRealPath(
-                            "./keys/DSAPublicKey01.key");
+                            "./keys/DSAPublicKey.key");
                     String privateKeyFilePath = getServletContext().getRealPath(
-                            "./keys/DSAPrivateKey01.key");
+                            "./keys/DSAPrivateKey.key");
 
                     DSAPublicKey publicKey = (DSAPublicKey) Util.getPublicKey(
                             publicKeyFilePath, "DSA");

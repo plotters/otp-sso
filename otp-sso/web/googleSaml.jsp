@@ -27,6 +27,8 @@
 <%@ page import="java.lang.String" %>
 <%@ page import="java.net.URLEncoder" %>
 
+<%  response.setContentType("text/html"); %>
+
 
 
 <%
