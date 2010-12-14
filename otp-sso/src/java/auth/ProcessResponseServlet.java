@@ -165,7 +165,7 @@ public class ProcessResponseServlet extends HttpServlet {
             String notOnOrAfter, String requestId, String acsURL)
             throws SamlException {
         String filepath = getServletContext().getRealPath(
-                "templates/" + samlResponseTemplateFile);
+                "includes/" + samlResponseTemplateFile);
         String samlResponse = Util.readFileContents(filepath);
         samlResponse = samlResponse.replace("<USERNAME_STRING>", authenticatedUser);
         samlResponse = samlResponse.replace("<RESPONSE_ID>", Util.createID());
