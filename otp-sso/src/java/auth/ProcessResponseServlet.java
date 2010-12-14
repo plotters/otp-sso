@@ -311,7 +311,10 @@ public class ProcessResponseServlet extends HttpServlet {
                 request.setAttribute("relayStateURL", relayStateURL);
 
                 if (username == null) {
-                    request.setAttribute("error", "Login Failed: Invalid user.");
+                    //request.setAttribute("error", "Login Failed: Invalid user.");
+                    request.setAttribute("error", "<div id=\"error\"><img src=\"img/warning.gif\"><br />Incorrect username or password</div><br />");
+
+
                 } else {
                     // Acquire public and private DSA keys
 

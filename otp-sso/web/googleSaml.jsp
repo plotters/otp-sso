@@ -42,10 +42,10 @@
             if (samlRequest == null) {
 %>
 
-<p><div id="google">
-    <p><center><img src="img/warning.gif"></center>
-    <p><b>Note: The user cannot be authenticated, and a SAML response cannot be
-            sent, until a SAML request is received from the service provider. </b></p>
+<div id="error">
+    <img src="img/warning.gif"><br />
+    Note: The user cannot be authenticated, and a SAML response cannot be
+            sent, until a SAML request is received from the service provider. 
 </div>
 <%      } else {
 
@@ -66,18 +66,18 @@
     <input type="hidden" name="returnPage" value="googleSaml.jsp">
     <input type="hidden" name="samlAction" value="Generate SAML Response">
 
-    <center>
+
+
+    <div id="login">
+         <br />
         Username: <input type="text" name="username" />
         <br />
         <br />
         Password: <input type="password" name="password" />
         <br/>
         <br />
-    </center>
-
-    <center>
         <input type="submit" name="samlButton" value="Login">
-    </center>
+    </div>
     <p><br>
 </form>
 <%

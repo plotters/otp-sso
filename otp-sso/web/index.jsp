@@ -46,22 +46,23 @@
 
 %> <script type="text/javascript">
     <!--
-    window.location = "../login.jsp"
+    window.location = "../index.jsp"
     //-->
 </script> <%
 
                 } else {
 
-                    out.print("<p> Incorret Username or Password </p><br />");
+%><div id="error"><img src="img/warning.gif"><br />Incorrect username or password</div><br /><%
 
-                    username = null;
-                    password = null;
-                }
+                                        username = null;
+                                        password = null;
+                                    }
 
-            }
+                                }
 
-            if (loginBox) {%>
-<center><form action="login.jsp" method="POST">
+                                if (loginBox) {%>
+<div id="login"><form action="index.jsp" method="POST">
+        <br />
         Username: <input type="text" name="username" />
         <br />
         <br />
@@ -69,7 +70,7 @@
         <br/>
         <br />
         <input type="submit" value="Login" />
-    </form></center>
+    </form></div>
 
 <% }
 
