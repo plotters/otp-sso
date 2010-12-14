@@ -52,7 +52,7 @@
         String error = (String) request.getAttribute("error");
         if (error != null) {
 %>
-<p><font color="red"><b><%= error%></b></font><p>
+<p><%= error%><p>
     <%
             }
             String issueInstant = (String) request.getAttribute("issueInstant");
@@ -67,6 +67,26 @@
     <input type="hidden" name="samlAction" value="Generate SAML Response">
 
     <div id="h2box"><h2>Google Apps Login</h2></div><br />
+
+    <% Enumeration paramNames = session.getAttributeNames();
+
+                    while (paramNames.hasMoreElements()) {
+                        String paramName = (String) paramNames.nextElement();
+                        if (paramName.equals("uid")) {
+                            String paramValue = (String) session.getAttribute(paramName);
+
+                            if (!paramValue.equals(null)) {
+        %>
+
+    <div id="error"><font align="left">Note: Re-authentication is required to use google.</font></div>
+
+    <br />
+<%;
+                                            }
+                                        }
+                                    }%>
+
+    
 
     <div id="login">
          <br />
