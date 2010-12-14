@@ -28,14 +28,26 @@
                 if (paramName.equals("lo")) {
                     String paramValue = request.getParameter(paramName);
                     if (paramValue.equals("true")) {
+
                     session.setAttribute("username", null);
                     session.setAttribute("uid", null);
+                    session.setAttribute("admin", null);
+                    session.setAttribute("yubi", null);
+                    session.setAttribute("totp", null);
+                    session.setAttribute("scratch", null);
+                    session.setAttribute("wifi", null);
 
-                        %> <script type="text/javascript">
+                        %>
+
+                        <script type="text/javascript">
 <!--
 window.location = "../index.jsp"
 //-->
-</script> <%
+</script>
+
+
+
+        <%
 
                     }
                 }

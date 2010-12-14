@@ -27,7 +27,7 @@
 <%@ page import="java.lang.String" %>
 <%@ page import="java.net.URLEncoder" %>
 
-<%  response.setContentType("text/html"); %>
+<%  response.setContentType("text/html");%>
 
 
 
@@ -45,20 +45,20 @@
 <div id="error">
     <img src="img/warning.gif"><br />
     Note: The user cannot be authenticated, and a SAML response cannot be
-            sent, until a SAML request is received from the service provider. 
+    sent, until a SAML request is received from the service provider.
 </div>
 <%      } else {
 
-        String error = (String) request.getAttribute("error");
-        if (error != null) {
+                String error = (String) request.getAttribute("error");
+                if (error != null) {
 %>
 <p><%= error%><p>
     <%
-            }
-            String issueInstant = (String) request.getAttribute("issueInstant");
-            String providerName = (String) request.getAttribute("providerName");
-            String acsURL = (String) request.getAttribute("acsURL");
-            String relayState = (String) request.getAttribute("relayStateURL");
+                    }
+                    String issueInstant = (String) request.getAttribute("issueInstant");
+                    String providerName = (String) request.getAttribute("providerName");
+                    String acsURL = (String) request.getAttribute("acsURL");
+                    String relayState = (String) request.getAttribute("relayStateURL");
     %>
 <form name="IdentityProviderForm" action="ProcessResponseServlet" method="post">
     <input type="hidden" name="SAMLRequest" value="<%=samlRequest%>"/>
@@ -76,20 +76,20 @@
                             String paramValue = (String) session.getAttribute(paramName);
 
                             if (!paramValue.equals(null)) {
-        %>
+    %>
 
     <div id="error"><font align="left">Note: Re-authentication is required to use google.</font></div>
 
     <br />
-<%;
-                                            }
-                                        }
-                                    }%>
+    <%;
+                            }
+                        }
+                    }%>
 
-    
+
 
     <div id="login">
-         <br />
+        <br />
         Username: <input id="focus" type="text" name="username" />
         <br />
         <br />
@@ -101,23 +101,27 @@
     <p><br>
 </form>
 <%
-        String samlResponse = (String) request.getAttribute("samlResponse");
-        if (samlResponse != null) {
-            if (username != null) {
+                String samlResponse = (String) request.getAttribute("samlResponse");
+                if (samlResponse != null) {
+                    if (username != null) {
 %>
 <%-- This is a hidden form that POSTs the SAML response to the ACS.--%>
-          <form name="acsForm" action="<%=acsURL%>" method="post">
-            <div style="display: none">
-            <textarea rows=10 cols=80 name="SAMLResponse"><%=samlResponse%> </textarea>
-            <textarea rows=10 cols=80 name="RelayState"><%=RequestUtil.htmlEncode(relayState)%></textarea>
-            </div>
-          </form>
+<form name="acsForm" action="<%=acsURL%>" method="post">
+    <div style="display: none">
+        <textarea rows=10 cols=80 name="SAMLResponse"><%=samlResponse%> </textarea>
+        <textarea rows=10 cols=80 name="RelayState"><%=RequestUtil.htmlEncode(relayState)%></textarea>
+    </div>
+</form>
 <%
-        session.setAttribute("username", username);
-        session.setAttribute("uid", idHandler.getUid(username));
-            
-            } else {
+                        session.setAttribute("username", username);
+                        session.setAttribute("uid", idHandler.getUid(username));
+                        session.setAttribute("admin", idHandler.getAdmin(username));
+                        session.setAttribute("yubi", idHandler.getYubi(username));
+                        session.setAttribute("totp", idHandler.getTotp(username));
+                        session.setAttribute("scratch", idHandler.getScratch(username));
+                        session.setAttribute("wifi", idHandler.getWifi(username));
 
+                    } else {
 
 %>
 <p><span style="font-weight:bold;color:red">
@@ -125,16 +129,16 @@
     </span></p>
     <%                }
     %>
-        <span id="samlResponseDisplay" style="display:inline">
-<!--        <b> Generated and Signed SAML Response </b>
-        <p><div class="codediv"><%=RequestUtil.htmlEncode(samlResponse)%></div>
-         <center>
-          <input type="button"
-                 value="Submit SAML Response"
-                 onclick="javascript:document.acsForm.submit()">
-        </center>-->
-<script>javascript:document.acsForm.submit()</script>
-        </span>
+<span id="samlResponseDisplay" style="display:inline">
+    <!--        <b> Generated and Signed SAML Response </b>
+            <p><div class="codediv"><%=RequestUtil.htmlEncode(samlResponse)%></div>
+             <center>
+              <input type="button"
+                     value="Submit SAML Response"
+                     onclick="javascript:document.acsForm.submit()">
+            </center>-->
+    <script>javascript:document.acsForm.submit()</script>
+</span>
 
 
 <%

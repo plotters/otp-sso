@@ -64,6 +64,12 @@ This tool is still very much in beta... still getting it running and adding feat
 
                     session.setAttribute("username", username);
                     session.setAttribute("uid", idHandler.getUid(username));
+                    session.setAttribute("admin", idHandler.getAdmin(username));
+                    session.setAttribute("yubi", idHandler.getYubi(username));
+                    session.setAttribute("totp", idHandler.getTotp(username));
+                    session.setAttribute("scratch", idHandler.getScratch(username));
+                    session.setAttribute("wifi", idHandler.getWifi(username));
+
 
 %> <script type="text/javascript">
     <!--
