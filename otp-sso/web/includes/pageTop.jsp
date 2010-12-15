@@ -12,7 +12,9 @@
 <%@ page import="java.io.*,java.util.*" %>
 
 
-
+<jsp:useBean id="totpAuth" class="auth.totp.totpauth" scope="request">
+    <jsp:setProperty name="totpAuth" property="*"/>
+</jsp:useBean>
 
 
 <html>
@@ -42,6 +44,35 @@
                         <script type="text/javascript">
 <!--
 window.location = "../index.jsp"
+//-->
+</script>
+
+
+
+        <%
+
+                    }
+                }
+
+                if (paramName.equals("totprst")) {
+                    String paramValue = request.getParameter(paramName);
+                    if (paramValue.equals("true")) {
+
+
+
+                       String uid = (String)session.getAttribute("uid");
+
+
+                        totpAuth.newSecret(uid);
+
+
+
+
+                        %>
+
+                        <script type="text/javascript">
+<!--
+window.location = "../totp.jsp"
 //-->
 </script>
 

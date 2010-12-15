@@ -41,7 +41,8 @@ This tool is still very much in beta... still getting it running and adding feat
 <div id="txtbox"><h2>Common Tasks</h2>
    <br /><p>
 <a href="http://start.ris-net.net" class="button">Start RIS-NET</a>
-   <a href="http://www.ris-net.net" class="button">RIS-NET Home</a>
+<a href="https://www.google.com/a/cpanel/ris-net.net/Dashboard" class="button">Google Admin</a>
+<a href="http://www.ris-net.net" class="button">RIS-NET Home</a>
 <a href="http://start.here" class="button">Start.Here</a>
 <a href="http://wiki.local" class="button">Wiki.Local</a>
    </p><br />
