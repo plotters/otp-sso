@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package auth.scratch;
 
 import auth.hash.AeSimpleSHA1;
@@ -22,30 +21,28 @@ import java.util.logging.Logger;
  * @author jake
  */
 public class scratchauth {
-    
+
     private static String DB_USER = authDbSecrets.DB_USER;
     private static String DB_PASSWORD = authDbSecrets.DB_PASSWORD;
     private static String DB_URL = authDbSecrets.DB_URL;
 
-    public scratchauth(){
-
+    public scratchauth() {
     }
 
-    public boolean verify(int uid, String password)
-    {
+    public boolean verify(int uid, String password) {
         boolean result = false;
 
-         String secret = null;
+        String secret = null;
 
-             //System.out.println(uid);
-             //System.out.println(password);
+        //System.out.println(uid);
+        //System.out.println(password);
 
-         try {
-                Connection c = null;
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                c = (Connection) DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+        try {
+            Connection c = null;
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            c = (Connection) DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-                String sql = null;
+            String sql = null;
             try {
                 sql = "SELECT * FROM authScratch WHERE (uid = '" + uid + "' && scratch = '" + AeSimpleSHA1.SHA1(password) + "') LIMIT 1";
                 //System.out.println(sql);
@@ -55,60 +52,18 @@ public class scratchauth {
                 Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-                Statement stmt = c.createStatement();
-                stmt.setFetchSize(1);
-
-                ResultSet rs = stmt.executeQuery(sql);
-
-                if (rs.next()) {
-                    result = true;
-                    secret = rs.getString(2);
-                }
-                //System.out.println("Secret:" + secret);
-                //System.out.println("Prefix:" + prefix);
-                rs.close();
-                stmt.close();
-
-                if (c != null) {
-                    try {
-                        c.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-             if(result == true)
-             {
-                 try {
-            Connection c = null;
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            c = (Connection) DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-
-            String sql = null;
-                try {
-                    sql = "delete FROM authScratch WHERE (uid = '" + uid + "' && scratch = '" + AeSimpleSHA1.SHA1(password) + "')";
-                } catch (NoSuchAlgorithmException ex) {
-                    Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
             Statement stmt = c.createStatement();
-            int updateCount = stmt.executeUpdate(sql);
-            // sqlcount++;
-            //System.out.println(sql + " : " + updateCount);
+            stmt.setFetchSize(1);
 
+            ResultSet rs = stmt.executeQuery(sql);
 
+            if (rs.next()) {
+                result = true;
+                secret = rs.getString(2);
+            }
+            //System.out.println("Secret:" + secret);
+            //System.out.println("Prefix:" + prefix);
+            rs.close();
             stmt.close();
 
             if (c != null) {
@@ -119,7 +74,106 @@ public class scratchauth {
                 }
             }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+        if (result == true) {
+            try {
+                Connection c = null;
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                c = (Connection) DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+                String sql = null;
+                try {
+                    sql = "delete FROM authScratch WHERE (uid = '" + uid + "' && scratch = '" + AeSimpleSHA1.SHA1(password) + "')";
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                Statement stmt = c.createStatement();
+                int updateCount = stmt.executeUpdate(sql);
+                // sqlcount++;
+                //System.out.println(sql + " : " + updateCount);
+
+
+                stmt.close();
+
+                if (c != null) {
+                    try {
+                        c.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+
+
+        return result;
+    }
+
+    public String validCodes(String stringUid) {
+
+        int uid = Integer.parseInt(stringUid);
+
+        String returnVal = null;
+
+        //System.out.println(uid);
+        //System.out.println(password);
+
+        try {
+            Connection c = null;
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            c = (Connection) DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+            String sql = null;
+
+            sql = "SELECT COUNT(*) FROM authScratch WHERE (uid = '" + uid + "')";
+            //System.out.println(sql);
+
+
+            Statement stmt = c.createStatement();
+
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                returnVal = rs.getString(1);
+            }
+            //System.out.println("Secret:" + secret);
+            //System.out.println("Prefix:" + prefix);
+            rs.close();
+            stmt.close();
+
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,14 +184,10 @@ public class scratchauth {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(scratchauth.class.getName()).log(Level.SEVERE, null, ex);
         }
-             }
 
 
 
+        return returnVal;
 
-        return result;
     }
-
-
-
 }

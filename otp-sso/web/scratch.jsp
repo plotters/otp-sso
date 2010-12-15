@@ -5,6 +5,10 @@
 <%@page contentType="text/html" %>
 <%@ page import="java.io.*,java.util.*" %>
 
+<jsp:useBean id="scratchAuth" class="auth.scratch.scratchauth" scope="request">
+    <jsp:setProperty name="scratchAuth" property="*"/>
+</jsp:useBean>
+
 <%
 
             String uid = null;
@@ -36,13 +40,30 @@
 
             if (uid != null && access.equals("1")) {
 
+
+                String stillValid = scratchAuth.validCodes(uid);
+
 %>
 
 
 
+<div id="h2box"><h2>Scratch Codes</h2></div><br />
 
-Welcome
+<div id="txtbox"><h2>Current State</h2>
+    <p><center>Currently valid Scratch codes remaining: <b><% out.print(stillValid); %></b></center></p>
+    </div><br />
 
+
+<div id="txtbox"><h2>Reset Scratch Codes</h2>
+    <p>To regenerate your Scratch Codes enter the number to generate and click generate<br/> </p><p><b><font color="red">WARNING: This will invalidate all currently active codes.</font></b></p>
+     <form action="scratch.jsp" method="POST">
+        <br />
+        Number of Codes: <input id="focus" type="text" name="codes" maxlength="2" size="2" />
+        <br />
+        <br />
+        <input type="submit" value="Generate" />
+    </form>
+</div>
 
 <%                      } else {
 
