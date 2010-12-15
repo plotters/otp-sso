@@ -4,7 +4,7 @@
 
 
 <jsp:include page="includes/pageTop.jsp" >
-    <jsp:param name="header" value='<title>Google SSO SAML</title>
+    <jsp:param name="header" value='<title>SSO - Google SAML</title>
 
                <script language="JavaScript">
                function submit_now(s,r) {

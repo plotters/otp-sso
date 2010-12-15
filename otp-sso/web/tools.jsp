@@ -1,5 +1,5 @@
 <jsp:include page="includes/pageTop.jsp" >
-    <jsp:param name="header" value="<title>SSO Login Page</title>" />
+    <jsp:param name="header" value="<title>SSO - Tools</title>" />
 </jsp:include>
 
 <%@page contentType="text/html" %>
