@@ -86,6 +86,7 @@ public class totpauth {
         long time = now.getTimeInMillis();
 
         time = time / 1000;
+        time = time + 90;
 
         String sha1hash = (String) password.subSequence(0, (password.length() - 6));
         try {
@@ -100,7 +101,7 @@ public class totpauth {
 
 
 
-        for (int i = 0; i < 90; i = i + 30) {
+        for (int i = 0; i < 180; i = i + 30) {
 
 
             long T = (time - i) / X;
@@ -291,15 +292,15 @@ public class totpauth {
         Calendar now = Calendar.getInstance();
         long time = now.getTimeInMillis();
 
-        String secret = "JBSWY3DPEHPK3PXP";
+        String secret = "QM43FB4HTUI52FKI";
         byte[] hex = Base32.decode(secret);
 
         time = time / 1000;
-        //time = time - 60;
+        time = time + 90;
         //SSSystem.out.println(time);
 
 
-        for (int i = 0; i < 90; i = i + 30) {
+        for (int i = 0; i < 180; i = i + 30) {
 
 
             long T = (time - i) / X;
