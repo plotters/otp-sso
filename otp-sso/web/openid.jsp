@@ -1,29 +1,12 @@
-<%@ page session="true" %>
-<html>
-<body>
-<%
-    if (request.getParameter("logout")!=null)
-    {
-        session.removeAttribute("openid");
-        session.removeAttribute("openid-claimed");
-%>
-    Logged out!<p>
-<%
-    }
-	if (session.getAttribute("openid")==null) {
-%>
-<form method="POST" action="consumer_redirect.jsp">
-<strong>OpenID:</strong>
-<input type="text" name="openid" size="60"/><br>
-<input type="submit"/>
-</form>
-<%
-} else {
-
-%>
-Logged in as <%= session.getAttribute("openid") %><p>
-<a href="?logout=true">Log out</a>
-
-<% } %>
-</body>
-</html>
+<%@ page contentType="application/xrds+xml"%><?xml version="1.0" encoding="UTF-8"?>
+<xrds:XRDS
+  xmlns:xrds="xri://$xrds"
+  xmlns:openid="http://openid.net/xmlns/1.0"
+  xmlns="xri://$xrd*($v*2.0)">
+  <XRD>
+    <Service priority="0">
+      <Type>http://openid.net/signon/1.0</Type>
+      <URI><%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()%>/provider.jsp</URI>
+    </Service>
+  </XRD>
+</xrds:XRDS>
