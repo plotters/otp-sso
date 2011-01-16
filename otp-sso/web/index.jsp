@@ -44,7 +44,7 @@ This tool is still very much in beta... still getting it running and adding feat
 <a href="https://www.google.com/a/cpanel/ris-net.net/Dashboard" class="button">Google Admin</a>
 <a href="http://www.ris-net.net" class="button">RIS-NET Home</a>
 <a href="http://start.here" class="button">Start.Here</a>
-<a href="http://wiki.local" class="button">Wiki.Local</a>
+<a href="http://wiki.local" class="button">Wiki</a>
    </p><br />
 </div>
 

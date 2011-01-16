@@ -57,14 +57,19 @@ public class ProcessResponseServlet extends HttpServlet {
      * successfully authenticated, or the user's username if the user is
      * successfully authenticated.
      */
-    private String login(String username, String password) {
+    private String login(String username, String password, String authed) {
         // Stage II: Update this method to call your authentication mechanism.
         // Return username for successful authentication. Return null string
         // for failed authentication.
 
         login idHandler = new login();
 
-        if (idHandler.authenticate(username, password)) {
+        if (authed.equals("yes"))
+        {
+            return username;
+        }
+        else if(idHandler.authenticate(username, password) && !authed.equals("yes"))
+        {
             return username;
         } else {
             return null;
@@ -272,7 +277,10 @@ public class ProcessResponseServlet extends HttpServlet {
         String returnPage = request.getParameter("returnPage");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String authed = request.getParameter("authed");
         String relayStateURL = request.getParameter("RelayState");
+
+        
 
         boolean continueLogin = true;
 
@@ -299,7 +307,11 @@ public class ProcessResponseServlet extends HttpServlet {
                  * to call your user authentication application.
                  */
 
-                username = login(username, password);
+
+               // System.out.print("Authed " + authed);
+               // System.out.print("username " + username);
+
+                username = login(username, password, authed);
 
                 // The following lines of code set variables used in the UI.
                 request.setAttribute("issueInstant", issueInstant);

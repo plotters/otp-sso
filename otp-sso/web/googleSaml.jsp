@@ -60,15 +60,19 @@
                     String acsURL = (String) request.getAttribute("acsURL");
                     String relayState = (String) request.getAttribute("relayStateURL");
     %>
-<form name="IdentityProviderForm" action="ProcessResponseServlet" method="post">
+<form name="IdentityProviderForm" action="ProcessResponseServlet" method="post" id="loginpost">
     <input type="hidden" name="SAMLRequest" value="<%=samlRequest%>"/>
     <input type="hidden" name="RelayState" value="<%=RequestUtil.htmlEncode(relayState)%>"/>
-    <input type="hidden" name="returnPage" value="googleSaml.jsp">
+    <input type="hidden" name="returnPage" value="googleSaml.jsp" />
+
+
     <input type="hidden" name="samlAction" value="Generate SAML Response">
 
     <div id="h2box"><h2>Google Apps Login</h2></div><br />
 
     <% Enumeration paramNames = session.getAttributeNames();
+
+                    boolean authed = false;
 
                     while (paramNames.hasMoreElements()) {
                         String paramName = (String) paramNames.nextElement();
@@ -76,15 +80,29 @@
                             String paramValue = (String) session.getAttribute(paramName);
 
                             if (!paramValue.equals(null)) {
+
+                                authed = true;
     %>
 
-    <div id="error"><font align="left">Note: Re-authentication is required to use google.</font></div>
 
+    <div id="error"><font align="left">Logging you into Google now...</font></div>
     <br />
-    <%;
+    <%
                             }
+
                         }
-                    }%>
+                    }
+
+                    if (authed) {%>
+                    <div id="login">
+                    <input type="hidden" name="authed" value="yes" />
+                    <input type="hidden" name="username" value="<% out.print(session.getAttribute("username")); %>" />
+                    <input type="hidden" name="password" value="yes" />
+
+
+                    <%
+                   } else {
+                    %><input type="hidden" name="authed" value="no" />
 
 
 
@@ -96,10 +114,26 @@
         Password: <input type="password" name="password" />
         <br/>
         <br />
+
+        <%
+                   }
+
+    %>
+
         <input type="submit" name="samlButton" value="Login">
     </div>
     <p><br>
 </form>
+
+    <script type="text/javascript">
+function myfunc () {
+var frm = document.getElementById("loginpost");
+frm.submit();
+}
+window.onload = myfunc;
+</script>
+
+    
 <%
                 String samlResponse = (String) request.getAttribute("samlResponse");
                 if (samlResponse != null) {
