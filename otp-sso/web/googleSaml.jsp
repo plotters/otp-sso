@@ -6,19 +6,19 @@
 <jsp:include page="includes/pageTop.jsp" >
     <jsp:param name="header" value='<title>SSO - Google SAML</title>
 
-               <script language="JavaScript">
-               function submit_now(s,r) {
-               document.acsForm.SAMLResponse.value=s;
-               document.acsForm.RelayState.value=r;
-               document.acsForm.submit();
-               }
-               </script>
+       
 
 
                ' />
 </jsp:include>
 
-
+<!--        <script language="JavaScript">
+               function submit_now(s,r) {
+               document.acsForm.SAMLResponse.value=s;
+               document.acsForm.RelayState.value=r;
+               document.acsForm.submit();
+               }
+               </script>-->
 <%@ page import="java.io.*,java.util.*" %>
 <%@page contentType="text/html" %>
 
@@ -125,13 +125,13 @@
     <p><br>
 </form>
 
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
 function myfunc () {
 var frm = document.getElementById("loginpost");
 frm.submit();
 }
 window.onload = myfunc;
-</script>
+</script>-->
 
     
 <%
